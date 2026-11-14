@@ -52,7 +52,6 @@ npx serve site
 
 I'm **Ruby Wei**, founder of ilmodo. Before starting it I spent about three and a half years as a management consultant at Protiviti, working on ESG reporting, greenhouse gas accounting and post-merger integration for Fortune 100 clients. I hold a B.S. in Finance from Texas A&M, the CIDESCO Skin Care Diploma and a Texas esthetician license.
 
-I'm open to roles in venture capital, climate tech and operations at early-stage companies.
-
 - Website: [ilmodobeauty.com](https://ilmodobeauty.com)
-- Email: [rubywei@ilmodobeauty.com](mailto:rubywei@ilmodobeauty.com)
+- LinkedIn: [linkedin.com/in/rubywei](https://www.linkedin.com/in/rubywei/)
+- Email: [rubyweibingqiao@gmail.com](mailto:rubyweibingqiao@gmail.com)
