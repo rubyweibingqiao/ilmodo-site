@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Referrals &amp; Partners — Ilmodo</title>
+<meta name="description" content="Share ilmodo. Clients give $25 and get $25. Partners earn 20% on each new client's first facial.">
+<meta property="og:title" content="Referrals &amp; Partners — Ilmodo">
+<meta property="og:description" content="Unhurried skincare. We come to you.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B0132B;
+  --red-deep:#7C0C1E;
+  --red-soft:rgba(176,19,43,.30);
+  --bone:#F4F1EC;
+  --bone-2:#EAE6DF;
+  --ink:#1E1A17;
+  --rule:rgba(30,26,23,.16);
+  --pad:clamp(20px,5vw,84px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bone);color:var(--ink);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  font-weight:300;line-height:1.55;letter-spacing:.005em;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:16px;padding:14px var(--pad);
+  background:rgba(244,241,236,.86);backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid rgba(30,26,23,.07);
+}
+nav.left{display:flex;gap:clamp(14px,2vw,30px);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+nav.left a{position:relative;padding-bottom:2px}
+nav.left a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--red);transition:width .35s cubic-bezier(.2,.7,.3,1)}
+nav.left a:hover::after{width:100%}
+.mark{
+  display:block;background:var(--red);color:#fff;padding:9px 20px 8px;text-align:center;line-height:1;
+}
+.mark .m1{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.30em;font-weight:400;padding-left:.30em}
+.mark .m2{font-size:8px;letter-spacing:.34em;margin-top:5px;font-weight:400;padding-left:.34em;opacity:.92}
+.right{display:flex;justify-content:flex-end;align-items:center;gap:14px}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px 4px;flex-direction:column;gap:5px;width:34px}
+.burger span{display:block;height:1.5px;background:var(--red);width:24px;transition:transform .3s,opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobilemenu{
+  position:fixed;inset:0;z-index:70;background:var(--bone);
+  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--pad);
+  opacity:0;pointer-events:none;transform:translateY(-12px);
+  transition:opacity .3s ease,transform .35s cubic-bezier(.2,.7,.3,1);
+}
+.mobilemenu.open{opacity:1;pointer-events:auto;transform:none}
+.mobilemenu a{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(30px,9vw,44px);
+  color:var(--red);line-height:1.25;padding:5px 0;
+}
+.mobilemenu a.mm-em{font-style:italic;border-bottom:1px solid var(--red);align-self:flex-start;margin-top:6px}
+.mobilemenu a.mm-book{
+  font-family:'Inter',sans-serif;font-size:13px;align-self:flex-start;
+  margin-top:26px;color:#fff;padding:14px 26px;
+}
+.mm-close{
+  position:absolute;top:14px;right:calc(var(--pad) - 6px);background:none;border:0;
+  color:var(--red);font-size:40px;line-height:1;cursor:pointer;padding:4px 10px;font-family:inherit;
+}
+.btn{
+  display:inline-block;background:var(--red);color:#fff;font-size:12.5px;letter-spacing:.14em;
+  text-transform:uppercase;padding:12px 22px;border:1px solid var(--red);
+  transition:background .3s ease,color .3s ease;white-space:nowrap;cursor:pointer;
+}
+.btn:hover{background:transparent;color:var(--red)}
+.btn.ghost{background:transparent;color:var(--red)}
+.btn.ghost:hover{background:var(--red);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;padding:clamp(96px,13vh,150px) 0 clamp(40px,6vh,90px);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hero-photo{
+  position:absolute;right:0;top:34%;width:44%;height:66%;
+  background:#C9B7AB center/cover no-repeat;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-inner{position:relative;z-index:2;padding:0 var(--pad);mix-blend-mode:multiply}
+.hero-mail{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.1vw,30px);color:var(--red);margin-bottom:clamp(14px,3vh,44px)}
+.hero-type{font-family:'Cormorant Garamond',serif;color:var(--red);line-height:.80;letter-spacing:-.015em;font-weight:400}
+.hero-type .l1{display:block;font-size:clamp(64px,15.1vw,260px);white-space:nowrap}
+.hero-type .l2{display:block;font-size:clamp(64px,15.1vw,260px);white-space:nowrap;margin-top:.04em}
+.hero-type .ghost{color:var(--red-soft)}
+.hero-sub{
+  position:relative;z-index:2;padding:clamp(26px,5vh,64px) var(--pad) 0;
+  max-width:640px;font-size:clamp(15px,1.15vw,18px);color:var(--ink);
+}
+.hero-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- generic section ---------- */
+section{padding:clamp(70px,11vh,150px) var(--pad);position:relative;scroll-margin-top:92px}
+.alt{background:var(--bone-2)}
+.eyebrow{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,2.6vw,38px);
+  color:var(--red);border-bottom:1px solid var(--red);display:inline-block;padding-bottom:4px;margin-bottom:clamp(34px,6vh,72px);
+}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,90px);align-items:start}
+.two.mid{align-items:center}
+.lede{font-size:clamp(19px,1.9vw,27px);line-height:1.4;font-weight:300;letter-spacing:-.01em}
+.body p{font-size:clamp(15px,1.12vw,18px);line-height:1.62}
+.body p + p{margin-top:1.1em}
+.em{color:var(--red)}
+.it{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.16em}
+
+/* story */
+.story-name{font-size:clamp(30px,3.6vw,54px);letter-spacing:.02em;color:var(--red);font-weight:300;margin-top:26px;line-height:1}
+.story-role{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,1.9vw,28px);color:var(--red);margin-top:8px}
+.frame{background:#C9B7AB;aspect-ratio:4/5;overflow:hidden;max-width:520px;margin-left:auto}
+.frame img{width:100%;height:100%;object-fit:cover}
+
+/* services */
+.svc-head{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,58px);color:var(--ink);font-weight:400;margin-bottom:26px}
+.svc-claim{font-size:clamp(24px,3vw,44px);line-height:1.12;font-weight:300;letter-spacing:-.02em}
+.acc{border-top:1px solid var(--rule)}
+.acc-item{border-bottom:1px solid var(--rule)}
+.acc-btn{
+  width:100%;background:none;border:0;text-align:left;cursor:pointer;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:24px 0;font-family:inherit;font-size:clamp(18px,1.5vw,23px);font-weight:300;letter-spacing:-.01em;
+}
+.acc-btn .chev{flex:0 0 auto;width:15px;height:15px;border-right:1.4px solid var(--ink);border-bottom:1.4px solid var(--ink);transform:rotate(45deg) translate(-4px,-4px);transition:transform .35s ease}
+.acc-item.open .acc-btn .chev{transform:rotate(-135deg) translate(-3px,-3px)}
+.acc-panel{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.2,.7,.3,1)}
+.acc-panel-in{padding:0 0 28px}
+.price{font-weight:500;font-size:15.5px;letter-spacing:.02em;color:var(--ink)}
+.acc-panel p{font-size:15.5px;line-height:1.62;margin-top:12px;max-width:52ch}
+.acc-note{margin-top:14px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--red)}
+
+/* method / modalities */
+.mod-list{display:grid;gap:0;border-top:1px solid rgba(176,19,43,.5)}
+.mod{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(16px,4vw,60px);
+  align-items:start;padding:clamp(22px,3.4vh,40px) 0;border-bottom:1px solid rgba(176,19,43,.5);
+}
+.mod h3{
+  font-size:clamp(26px,4.1vw,64px);line-height:.98;font-weight:400;letter-spacing:-.025em;color:var(--red);
+  text-transform:uppercase;font-family:'Inter',sans-serif;
+}
+.mod h3 small{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;font-size:clamp(15px,.36em,26px);letter-spacing:0;margin-top:.3em;opacity:.85}
+.mod p{font-size:clamp(14.5px,1.05vw,17px);line-height:1.6;padding-top:.5em}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,4vw,64px)}
+.step .num{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,5.4vw,86px);color:var(--red-soft);line-height:.9}
+.step h3{font-size:clamp(18px,1.5vw,24px);font-weight:400;margin:10px 0 12px;letter-spacing:-.01em}
+.step p{font-size:15.5px;line-height:1.6}
+
+/* area */
+.area-big{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7.4vw,124px);line-height:.94;color:var(--red);font-weight:400;letter-spacing:-.02em}
+.area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;margin-top:clamp(34px,5vh,60px);border-top:1px solid var(--rule);padding-top:30px}
+.area-grid h4{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:8px}
+.area-grid p{font-size:15.5px;line-height:1.55}
+table.fees{border-collapse:collapse;width:100%;max-width:320px;font-size:15.5px}
+table.fees td{padding:7px 0;border-bottom:1px solid rgba(176,19,43,.25)}
+table.fees td:last-child{text-align:right;color:var(--red);white-space:nowrap;padding-left:14px}
+table.fees tr:last-child td{border-bottom:0}
+
+/* faq */
+.faq{max-width:900px;margin:0 auto}
+.collab{padding:22px 0;border-bottom:1px solid var(--rule)}
+.collab:first-child{padding-top:0}
+.collab h4{font-size:clamp(18px,1.5vw,23px);font-weight:400;letter-spacing:-.01em;color:var(--red);margin-bottom:8px}
+.collab p{font-size:15.5px;line-height:1.6}
+
+/* footer */
+footer{background:var(--red);color:var(--bone);padding:clamp(56px,9vh,110px) var(--pad) 40px}
+footer a{transition:opacity .25s ease}
+footer a:hover{opacity:.65}
+.foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.foot-word{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,10.5vw,180px);line-height:.86;letter-spacing:.02em;font-weight:400}
+.foot-mail{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.2vw,34px);margin-top:14px;display:inline-block;border-bottom:1px solid rgba(244,241,236,.5)}
+.foot-tel{display:table;margin-top:10px}
+.foot-links{display:flex;flex-direction:column;gap:10px;font-size:15px;letter-spacing:.04em;margin-top:10px}
+.foot-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(44px,7vh,90px);padding-top:20px;border-top:1px solid rgba(244,241,236,.28);font-size:12px;letter-spacing:.09em;text-transform:uppercase;opacity:.82}
+
+/* sticky mobile book bar */
+.bookbar{display:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .two,.steps{grid-template-columns:1fr}
+  .mod{grid-template-columns:1fr;gap:8px}
+  .foot-top{grid-template-columns:1fr}
+  .hero{min-height:auto;display:flex;flex-direction:column}
+  .hero-inner{mix-blend-mode:normal;order:1}
+  .hero-photo{position:relative;order:2;right:auto;top:auto;width:100%;height:auto;aspect-ratio:11/12;margin-top:30px}
+  .hero-sub{order:3}
+  .hero-type .l1,.hero-type .l2{white-space:normal;font-size:clamp(46px,13.6vw,104px)}
+  .hero-type .ghost{display:block;color:rgba(176,19,43,.42)}
+  .story-photo{order:-1;margin-bottom:26px}
+  .frame{margin-left:0;max-width:none}
+}
+@media (max-width:760px){
+  header{grid-template-columns:auto 1fr;gap:10px;padding:10px var(--pad)}
+  nav.left{display:none}
+  .mark{justify-self:start}
+  .right{justify-self:end}
+  .right .btn{padding:10px 14px;font-size:11px;letter-spacing:.1em}
+  .burger{display:flex}
+  .bookbar{
+    display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:var(--red);color:#fff;text-align:center;padding:15px;
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  body{padding-bottom:52px}
+  .hero{padding-top:92px}
+}
+
+/* gift cards */
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.gift-card{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1.586/1;padding:16px 18px;background:var(--red);color:var(--bone);border-radius:7px;text-decoration:none;box-shadow:0 1px 0 rgba(0,0,0,.04);transition:transform .25s ease,box-shadow .25s ease}
+.gift-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(124,12,30,.22)}
+.gc-mark{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em}
+.gc-amt{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,2.7vw,42px);line-height:1;font-weight:400}
+.gc-what{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:7px;opacity:.92}
+.gift-note{opacity:.78}
+@media (max-width:760px){.gift-grid{grid-template-columns:1fr;gap:12px}.gift-card{aspect-ratio:auto;min-height:118px;padding:16px 18px}}
+
+/* nav fit: 6 links */
+@media (max-width:1399px){nav.left{gap:16px;font-size:12px}}
+@media (max-width:1240px){nav.left{display:none}.burger{display:flex}}
+
+/* referrals page */
+.ref-top{padding-top:clamp(130px,18vh,190px)}
+.ref-h1{font-family:'Cormorant Garamond',serif;color:var(--red);font-weight:400;line-height:.9;letter-spacing:-.015em;font-size:clamp(56px,9vw,140px)}
+.ref-top .lede{max-width:620px;margin-top:clamp(22px,4vh,40px)}
+.ref-offer{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0 8px}
+.ref-offer div{background:var(--red);color:var(--bone);border-radius:7px;padding:18px 20px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between}
+.ref-offer .amt{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3vw,46px);line-height:1}
+.ref-offer .who{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.92}
+.ref-steps{list-style:none;counter-reset:s;margin:0 0 30px;border-top:1px solid var(--rule)}
+.ref-steps li{counter-increment:s;padding:18px 0 18px 54px;border-bottom:1px solid var(--rule);position:relative;font-size:clamp(15px,1.12vw,18px);line-height:1.6}
+.ref-steps li::before{content:"0" counter(s);position:absolute;left:0;top:13px;font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--red)}
+.ref-who{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.ref-who span{border:1px solid var(--red-soft);color:var(--red);padding:7px 13px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ref-terms{width:100%;border-collapse:collapse;border-top:1px solid var(--rule)}
+.ref-terms td{padding:18px 0;border-bottom:1px solid var(--rule);vertical-align:top;font-size:clamp(15px,1.12vw,18px);line-height:1.55}
+.ref-terms td:first-child{width:38%;padding-right:18px;padding-top:21px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.ref-fine{list-style:none;margin-top:28px;font-size:14px;line-height:1.6;opacity:.82}
+.ref-fine li{padding-left:16px;position:relative;margin-bottom:10px}
+.ref-fine li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:1px;background:var(--red)}
+.ref-form{display:grid;gap:18px;background:var(--bone);padding:clamp(24px,4vw,44px);border:1px solid var(--rule)}
+.ref-form label{display:grid;gap:8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.ref-form input,.ref-form select,.ref-form textarea{font:inherit;font-size:16px;letter-spacing:normal;text-transform:none;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:0;padding:12px 14px;width:100%}
+.ref-form textarea{min-height:96px;resize:vertical}
+.ref-form .check{display:flex;gap:12px;align-items:flex-start;text-transform:none;letter-spacing:normal;font-size:14px;color:var(--ink)}
+.ref-form .check input{width:auto;margin-top:5px}
+.ref-form button{justify-self:start}
+.ref-msg{display:none;font-size:15px}
+.ref-msg.ok{display:block}
+.ref-msg.err{display:block;color:var(--red)}
+@media (max-width:760px){.ref-offer{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="left">
+    <a href="/#story">Info</a>
+    <a href="/#services">Services</a>
+    <a href="/#method">The Method</a>
+    <a href="/#faq">FAQ</a>
+    <a href='/skin-profile'>Intake Form</a>
+    <a href='/referrals' aria-current='page'>Referrals</a>
+  </nav>
+  <a href="/" class="mark" aria-label="Ilmodo home">
+    <div class="m1">ILMODO</div>
+    <div class="m2">MOBILE FACIALS</div>
+  </a>
+  <div class="right">
+    <a class="btn book" href="#book">Book Now</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilemenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobilemenu" id="mobilemenu" aria-hidden="true">
+  <button class="mm-close" id="mm-close" aria-label="Close menu">&times;</button>
+  <a href="/#story">Info</a>
+  <a href="/#services">Services</a>
+  <a href="/#gift">Gift Cards</a>
+  <a href="/#method">The Method</a>
+  <a href="/#area">Service Area</a>
+  <a href="/#collaborate">Collaborations</a>
+  <a href="/#faq">Questions</a>
+  <a class='mm-em' href='/skin-profile'>Skin Intake Form</a>
+  <a href='/referrals'>Referrals</a>
+  <a class="btn book mm-book" href="#book">Book Now</a>
+</nav>
+
+<a class="bookbar book" href="#book">Book Now</a>
+
+<main>
+<section class="ref-top">
+  <span class="eyebrow">Referrals &amp; Partners</span>
+  <h1 class="ref-h1">Share the hour.</h1>
+  <p class="lede">The best introductions come from people who already know the work. Share ilmodo with someone who would value it, and we'll return the favor.</p>
+</section>
+
+<section class="alt rv" id="clients">
+  <span class="eyebrow">For clients</span>
+  <div class="two">
+    <div>
+      <h2 class="svc-head">Give $25, get $25.</h2>
+      <div class="body"><p>Send a friend our way. They take $25 off their first facial, and once they've had it, you get $25 toward your next one.</p></div>
+      <div class="ref-offer">
+        <div><span class="amt">$25</span><span class="who">off for your friend</span></div>
+        <div><span class="amt">$25</span><span class="who">credit for you</span></div>
+      </div>
+    </div>
+    <div>
+      <ol class="ref-steps">
+        <li>Your friend books online and types your full name in the <strong>Referral code</strong> field.</li>
+        <li>We take $25 off at the end of their first treatment.</li>
+        <li>Your $25 credit comes off your next facial, automatically. There's no limit on how many friends you send.</li>
+      </ol>
+      <a class="btn book" href="#book">Send them to booking</a>
+    </div>
+  </div>
+</section>
+
+<section class="rv" id="partners">
+  <span class="eyebrow">For partners</span>
+  <div class="two">
+    <div>
+      <h2 class="svc-head">Earn 20% on every client you send.</h2>
+      <div class="body"><p>For people whose audiences or clients would value unhurried, professional skin care at home.</p></div>
+      <div class="ref-who"><span>Creators</span><span>Doulas</span><span>Lactation consultants</span><span>Wedding &amp; event planners</span><span>Photographers</span><span>Makeup artists</span><span>Community &amp; lifestyle directors</span></div>
+    </div>
+    <div>
+      <table class="ref-terms">
+        <tr><td>Your audience gets</td><td>$25 off their first facial with your personal code.</td></tr>
+        <tr><td>You earn</td><td>20% of what each new client pays for their first treatment.</td></tr>
+        <tr><td>Membership bonus</td><td>$200 if someone you refer joins il modo, the year-long membership, within 90 days of their first visit.</td></tr>
+        <tr><td>Paid</td><td>Monthly, for treatments completed and paid the month before.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="alt rv" id="apply">
+  <span class="eyebrow">Apply</span>
+  <div class="two">
+    <div>
+      <h2 class="svc-head">Tell us about you.</h2>
+      <div class="body"><p>We read every application and reply within a few days. Once approved, you'll get your code and a short partner guide.</p></div>
+      <ul class="ref-fine">
+        <li>Commission applies to new clients only, on their first paid treatment. Deposits alone, refunds and no-shows don't count, and you can't refer yourself.</li>
+        <li>Partners must clearly disclose the relationship in every post or recommendation, for example: "I earn a commission if you book with my code."</li>
+        <li>ilmodo may update or end the program with notice. Commissions already earned are always paid.</li>
+      </ul>
+    </div>
+    <form class="ref-form" id="partner-form" novalidate>
+      <label>Full name<input name="full_name" required autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+      <label>I am a
+        <select name="partner_type" required>
+          <option value="">Choose one</option>
+          <option>Creator</option><option>Doula</option><option>Lactation consultant</option>
+          <option>Wedding or event planner</option><option>Photographer</option>
+          <option>Makeup artist or hair stylist</option><option>Community or lifestyle director</option><option>Other</option>
+        </select>
+      </label>
+      <label>Primary social media handle<input name="handle_or_business" placeholder="The account with your largest audience, e.g. @yourname"></label>
+      <label>Where are your followers or clients?<input name="audience_location" placeholder="e.g. mostly Katy and Cypress"></label>
+      <label>How would you share ilmodo?<textarea name="how_you_would_refer"></textarea></label>
+      <label class="check"><input type="checkbox" name="agreed_to_terms" required> I've read the partner terms on this page, including the disclosure requirement.</label>
+      <button class="btn" type="submit">Submit application</button>
+      <p class="ref-msg" id="ref-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="book-anchor">
+  <div class="foot-top">
+    <div>
+      <div class="foot-word">ILMODO</div>
+      <a class="foot-mail mail-link" href="mailto:rubywei@ilmodobeauty.com">rubywei@ilmodobeauty.com</a>
+      <a class="foot-mail foot-tel" href="tel:+18326746132">832-674-6132</a>
+    </div>
+    <div>
+      <a class="btn" style="background:var(--bone);color:var(--red);border-color:var(--bone)" href="#book" id="foot-book">Book Now</a>
+      <div class="foot-links">
+        <a href="/#services">Services</a>
+        <a href="/#gift">Gift Cards</a>
+        <a href="/#method">The Method</a>
+        <a href="/#area">Service Area</a>
+        <a href="/#collaborate">Collaborations</a>
+        <a href="/#faq">Questions</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" id="ig-link">Instagram</a>
+        <a href='/skin-profile'>Skin Intake Form</a>
+        <a href='/referrals'>Referrals</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>Ilmodo — Mobile Facials · Houston, Texas</span>
+    <span>&copy; <span id="yr"></span> Ilmodo</span>
+  </div>
+</footer>
+
+<script>
+/* ====== THE ONE THING TO SWAP: your Square booking link ====== */
+const BOOKING_URL = "https://book.squareup.com/appointments/ne7uq7wif79wxj/location/LHZG1QEM6F4RK/services";
+const INSTAGRAM_URL = "https://instagram.com/ilmodobeauty";
+const CONTACT_EMAIL = "rubywei@ilmodobeauty.com";
+/* ============================================================ */
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+document.querySelectorAll('a.book, #foot-book').forEach(a => {
+  if (BOOKING_URL && BOOKING_URL !== "#book") {
+    a.href = BOOKING_URL; a.target = "_blank"; a.rel = "noopener";
+  } else {
+    // Square link not connected yet — send people to the contact block instead of nowhere.
+    a.href = "#book-anchor";
+  }
+});
+document.getElementById('ig-link').href = INSTAGRAM_URL;
+// only the two places that display the address as text — not buttons with their own label
+document.querySelectorAll('a.mail-link').forEach(a => {
+  a.href = "mailto:" + CONTACT_EMAIL; a.textContent = CONTACT_EMAIL;
+});
+
+/* mobile menu */
+const menu = document.getElementById('mobilemenu');
+const burger = document.getElementById('burger');
+const setMenu = open => {
+  menu.classList.toggle('open', open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+document.getElementById('mm-close').addEventListener('click', () => setMenu(false));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+/* accordions */
+document.querySelectorAll('.acc').forEach(acc => {
+  const items = [...acc.querySelectorAll('.acc-item')];
+  items.forEach((item, i) => {
+    const btn = item.querySelector('.acc-btn');
+    const panel = item.querySelector('.acc-panel');
+    const open = () => { item.classList.add('open'); panel.style.maxHeight = panel.scrollHeight + 'px'; };
+    const close = () => { item.classList.remove('open'); panel.style.maxHeight = '0px'; };
+    btn.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      items.forEach(o => { o.classList.remove('open'); o.querySelector('.acc-panel').style.maxHeight = '0px'; });
+      if (!wasOpen) open();
+    });
+    if (i === 0 && acc.id === 'svc-acc') open();
+  });
+});
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.acc-item.open .acc-panel').forEach(p => p.style.maxHeight = p.scrollHeight + 'px');
+});
+
+/* reveal on scroll — with a fail-safe so nothing can ever stay invisible */
+const reveals = [...document.querySelectorAll('.rv')];
+const showIfNear = () => {
+  reveals.forEach(el => {
+    if (el.classList.contains('in')) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.94 && r.bottom > 0) el.classList.add('in');
+  });
+};
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+  reveals.forEach(el => io.observe(el));
+} else {
+  reveals.forEach(el => el.classList.add('in'));
+}
+['scroll','resize','load'].forEach(ev => window.addEventListener(ev, showIfNear, {passive:true}));
+showIfNear();
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) reveals.forEach(el => el.classList.add('in'));
+
+/* partner application -> Supabase */
+(() => {
+  const SUPABASE_URL = "https://qghjthnmokoynqqsdvfi.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_cOHLeqF4xaDLkuCURZZ8iQ_8pPWIzAa";
+  const form = document.getElementById("partner-form");
+  const msg = document.getElementById("ref-msg");
+  if (!form) return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.className = "ref-msg";
+    const d = new FormData(form);
+    if (!d.get("full_name") || !d.get("email") || !d.get("partner_type") || !d.get("agreed_to_terms")) {
+      msg.textContent = "Please fill in your name, email and partner type, and agree to the terms.";
+      msg.className = "ref-msg err"; return;
+    }
+    const v = k => ((d.get(k) || "") + "").trim() || null;
+    const row = { full_name: v("full_name"), email: v("email"), phone: v("phone"), partner_type: d.get("partner_type"),
+      handle_or_business: v("handle_or_business"), audience_location: v("audience_location"),
+      how_you_would_refer: v("how_you_would_refer"), agreed_to_terms: true };
+    const btn = form.querySelector("button"); btn.disabled = true;
+    try {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/partner_applications", { method: "POST",
+        headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
+        body: JSON.stringify(row) });
+      if (!r.ok) throw new Error(r.status);
+      form.reset();
+      msg.textContent = "Thank you. We've received your application and will be in touch within a few days.";
+      msg.className = "ref-msg ok";
+    } catch (err) {
+      msg.textContent = "Something went wrong. Please email rubywei@ilmodobeauty.com and we'll take it from there.";
+      msg.className = "ref-msg err";
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

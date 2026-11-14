@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Skin Intake Form — Ilmodo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B0132B; --red-soft:rgba(176,19,43,.30);
+  --bone:#F4F1EC; --ink:#1E1A17; --rule:rgba(30,26,23,.18);
+  --pad:clamp(20px,5vw,84px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bone);color:var(--ink);font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:300;line-height:1.55}
+a{color:var(--red)}
+
+header{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+  gap:16px;padding:14px var(--pad);background:rgba(244,241,236,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(30,26,23,.08);
+}
+.mark{display:block;background:var(--red);color:#fff;padding:9px 20px 8px;text-align:center;line-height:1;text-decoration:none}
+.mark .m1{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.30em;padding-left:.30em}
+.mark .m2{font-size:8px;letter-spacing:.34em;margin-top:5px;padding-left:.34em;opacity:.92}
+
+.wrap{max-width:780px;margin:0 auto;padding:clamp(36px,6vh,72px) var(--pad) 140px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(38px,7vw,80px);line-height:.95;color:var(--red);letter-spacing:-.01em}
+.sub{font-size:clamp(16px,1.4vw,19px);margin-top:18px;max-width:56ch}
+.note{margin-top:12px;font-size:14px;color:#5A524C;max-width:58ch}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--red);color:#fff;border:1px solid var(--red);font-size:13px;letter-spacing:.13em;
+  text-transform:uppercase;padding:15px 30px;cursor:pointer;font-family:inherit;
+  transition:background .3s,color .3s;text-decoration:none;
+}
+.btn:hover{background:transparent;color:var(--red)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.small{padding:9px 16px;font-size:11.5px;letter-spacing:.1em}
+.btn.ghost{background:transparent;color:var(--red)}
+.btn.ghost:hover{background:var(--red);color:#fff}
+
+fieldset{border:0;margin-top:clamp(34px,5vh,56px)}
+legend{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(23px,2.4vw,33px);
+  color:var(--red);border-bottom:1px solid var(--red);padding-bottom:3px;margin-bottom:24px;
+}
+label.lb{display:block;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--red);margin-bottom:7px;font-weight:500}
+.hint{font-size:13.5px;color:#6B625C;margin:-2px 0 9px;line-height:1.5}
+input[type=text],input[type=tel],input[type=email],input[type=date],select,textarea{
+  width:100%;background:#fff;border:1px solid var(--rule);padding:13px 14px;
+  font-family:inherit;font-size:16px;font-weight:300;color:var(--ink);border-radius:0;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:-1px}
+textarea{min-height:88px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:22px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{border:1px solid var(--rule);padding:10px 15px;font-size:14.5px;cursor:pointer;user-select:none;background:#fff;transition:all .2s}
+.chip.on{background:var(--red);color:#fff;border-color:var(--red)}
+.check{display:flex;gap:11px;align-items:flex-start;font-size:15px;cursor:pointer;color:var(--ink)}
+.check input{width:19px;height:19px;accent-color:var(--red);margin-top:2px;flex:0 0 auto}
+
+.bar{
+  position:fixed;left:0;right:0;bottom:0;background:var(--bone);border-top:1px solid var(--rule);
+  padding:14px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:14px;z-index:30;
+}
+.status{font-size:13.5px;color:#6B625C}
+.status.err{color:#A5121A}
+.hidden{display:none!important}
+.privacy{margin-top:30px;font-size:13px;color:#6B625C;border-left:2px solid var(--red-soft);padding-left:14px;line-height:1.6}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* thank you */
+.done h1{margin-bottom:20px}
+.done .sub{font-size:clamp(17px,1.5vw,21px)}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="mark" href="/"><div class="m1">ILMODO</div><div class="m2">MOBILE FACIALS</div></a>
+  <a class="btn small ghost" href="/">Back to site</a>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ THANK YOU ============ -->
+  <section id="done" class="done hidden">
+    <h1>Thank you.</h1>
+    <p class="sub">Your intake is with us. Our team reads it before your appointment, so the treatment is planned around your skin rather than decided on the doorstep.</p>
+    <p class="note">If anything changes before your facial &mdash; a new medication, a reaction, a peel somewhere else &mdash; just tell our team on the day. You don't need to fill this in again.</p>
+    <p style="margin-top:32px"><a class="btn" href="/">Back to the site</a></p>
+  </section>
+
+  <!-- ============ FORM ============ -->
+  <form id="form">
+    <h1>Skin intake<br>form.</h1>
+    <p class="sub">Before your first facial, tell us what your skin has been through. It's how we decide what your hour actually looks like, instead of guessing on the day.</p>
+    <p class="note">About three minutes. Answer what you can &mdash; anything you skip, we'll cover in person during your consultation.</p>
+
+    <!-- honeypot -->
+    <div class="hp"><label>Leave this empty<input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <fieldset>
+      <legend>You</legend>
+      <div class="field">
+        <label class="lb" for="full_name">Client name</label>
+        <input type="text" id="full_name" autocomplete="name" required>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label class="lb" for="date_of_birth">Date of birth</label>
+          <input type="date" id="date_of_birth">
+        </div>
+        <div class="field">
+          <label class="lb" for="phone">Phone</label>
+          <input type="tel" id="phone" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label class="lb" for="email">Email</label>
+        <div class="hint">So we can match this form to your booking.</div>
+        <input type="email" id="email" autocomplete="email">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Medical history</legend>
+      <div class="field">
+        <label class="lb">Does any of this apply to you?</label>
+        <div class="hint">Tick everything that applies. Several of these change which modalities are safe to use, so it matters more than it might seem.</div>
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="field hidden" id="other-wrap">
+        <label class="lb" for="medical_other">Tell us about the "other"</label>
+        <textarea id="medical_other" placeholder="Anything else we should know about."></textarea>
+      </div>
+      <div class="field">
+        <label class="lb" for="current_medication">Current medication</label>
+        <div class="hint">Including prescription actives &mdash; retinoids or tretinoin, isotretinoin (Accutane) in the last 12 months, antibiotics, blood thinners, anything that makes skin more sun-sensitive.</div>
+        <textarea id="current_medication"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Treatments</legend>
+      <div class="field">
+        <label class="lb" for="current_treatments">Current treatments</label>
+        <div class="hint">Anything ongoing right now &mdash; a course of peels, laser, injectables, dermatology care.</div>
+        <textarea id="current_treatments"></textarea>
+      </div>
+      <div class="field">
+        <label class="lb" for="previous_treatments">Previous treatments</label>
+        <div class="hint">What you've had before, roughly when, and how your skin responded.</div>
+        <textarea id="previous_treatments"></textarea>
+      </div>
+      <div class="field">
+        <label class="lb" for="products_used">Products you're using</label>
+        <div class="hint">Morning and night. Brand names are fine &mdash; or bring a photo of the shelf on the day.</div>
+        <textarea id="products_used"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your skin</legend>
+      <div class="field">
+        <label class="lb" for="diet_fluids">Eating pattern and fluid intake</label>
+        <div class="hint">Roughly how you eat and how much water you drink in a day. Dehydration shows up in skin long before it shows up anywhere else.</div>
+        <textarea id="diet_fluids"></textarea>
+      </div>
+      <div class="field">
+        <label class="lb" for="skin_type">Skin type, if you know it</label>
+        <select id="skin_type">
+          <option value="">Choose one</option>
+          <option>Oily</option>
+          <option>Combination</option>
+          <option>Normal / balanced</option>
+          <option>Dry</option>
+          <option>Sensitive / reactive</option>
+          <option>Honestly not sure</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="lb" for="concerns">Concerns you want to address</label>
+        <div class="hint">What's been frustrating you, what you've already tried, what you're hoping for.</div>
+        <textarea id="concerns" style="min-height:120px"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Last thing</legend>
+      <div class="field">
+        <label class="check"><input type="checkbox" id="consent_accurate" required>
+          <span>Everything above is accurate as far as I know, and I'll tell the team if anything changes before my appointment.</span></label>
+      </div>
+    </fieldset>
+
+    <p class="privacy">What you write here goes straight to our team and nowhere else. It is stored encrypted, it is never sold or shared, and it is not used for advertising. To have it deleted, email <a href="mailto:rubywei@ilmodobeauty.com">rubywei@ilmodobeauty.com</a> and it will be deleted within 24 hours.</p>
+  </form>
+</div>
+
+<div class="bar" id="bar">
+  <span class="status" id="status">Nothing sent yet.</span>
+  <button class="btn" id="submit" form="form" type="submit">Send my intake</button>
+</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const SUPABASE_URL = 'https://qghjthnmokoynqqsdvfi.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_cOHLeqF4xaDLkuCURZZ8iQ_8pPWIzAa';
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } });
+
+const CONDITIONS = [
+  'Heart disease','Blood pressure abnormality','Epilepsy','Skin disorders','Smoking',
+  'Fillers / Botox / thread lift','Medical peels','Metal plates or pins','Diabetes',
+  'Allergies','Pregnancy','Laser','Other'
+];
+
+const $ = id => document.getElementById(id);
+const TEXT_FIELDS = ['full_name','phone','email','medical_other','current_medication',
+  'current_treatments','previous_treatments','products_used','diet_fluids','skin_type','concerns'];
+
+// build condition chips
+const chipBox = $('chips');
+CONDITIONS.forEach(c => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = c; b.dataset.v = c;
+  b.setAttribute('aria-pressed','false');
+  b.addEventListener('click', () => {
+    b.classList.toggle('on');
+    b.setAttribute('aria-pressed', b.classList.contains('on') ? 'true' : 'false');
+    if (c === 'Other') $('other-wrap').classList.toggle('hidden', !b.classList.contains('on'));
+  });
+  chipBox.appendChild(b);
+});
+const getChips = () => [...chipBox.querySelectorAll('.chip.on')].map(b => b.dataset.v);
+
+const status = (msg, kind='') => { const el = $('status'); el.textContent = msg; el.className = 'status ' + kind; };
+
+$('form').addEventListener('submit', async e => {
+  e.preventDefault();
+  if ($('website').value) return;                 // bot trap
+  if (!$('full_name').value.trim()) { status('Your name is needed before we can send this.', 'err'); $('full_name').focus(); return; }
+  if (!$('consent_accurate').checked) { status('Please tick the confirmation at the bottom.', 'err'); return; }
+
+  $('submit').disabled = true; status('Sending…');
+
+  const row = {
+    medical_history: getChips(),
+    date_of_birth: $('date_of_birth').value || null,
+    consent_accurate: true
+  };
+  TEXT_FIELDS.forEach(f => { const v = $(f).value.trim(); row[f] = v === '' ? null : v; });
+
+  const { error } = await sb.from('intake_forms').insert(row);
+
+  if (error) {
+    $('submit').disabled = false;
+    status('That didn’t send: ' + error.message + '. Please try again, or email it to rubywei@ilmodobeauty.com.', 'err');
+    return;
+  }
+  $('form').classList.add('hidden');
+  $('bar').classList.add('hidden');
+  $('done').classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+</script>
+</body>
+</html>

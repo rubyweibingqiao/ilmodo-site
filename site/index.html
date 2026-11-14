@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ilmodo — Mobile Facials, Houston</title>
+<meta name="description" content="Ilmodo is a mobile facial studio in Houston. Unhurried, 60 to 120 minute treatments, decided by your skin that day. We come to you.">
+<meta property="og:title" content="Ilmodo — Mobile Facials, Houston">
+<meta property="og:description" content="Unhurried skincare. We come to you.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B0132B;
+  --red-deep:#7C0C1E;
+  --red-soft:rgba(176,19,43,.30);
+  --bone:#F4F1EC;
+  --bone-2:#EAE6DF;
+  --ink:#1E1A17;
+  --rule:rgba(30,26,23,.16);
+  --pad:clamp(20px,5vw,84px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bone);color:var(--ink);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  font-weight:300;line-height:1.55;letter-spacing:.005em;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:16px;padding:14px var(--pad);
+  background:rgba(244,241,236,.86);backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid rgba(30,26,23,.07);
+}
+nav.left{display:flex;gap:clamp(14px,2vw,30px);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+nav.left a{position:relative;padding-bottom:2px}
+nav.left a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--red);transition:width .35s cubic-bezier(.2,.7,.3,1)}
+nav.left a:hover::after{width:100%}
+.mark{
+  display:block;background:var(--red);color:#fff;padding:9px 20px 8px;text-align:center;line-height:1;
+}
+.mark .m1{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.30em;font-weight:400;padding-left:.30em}
+.mark .m2{font-size:8px;letter-spacing:.34em;margin-top:5px;font-weight:400;padding-left:.34em;opacity:.92}
+.right{display:flex;justify-content:flex-end;align-items:center;gap:14px}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px 4px;flex-direction:column;gap:5px;width:34px}
+.burger span{display:block;height:1.5px;background:var(--red);width:24px;transition:transform .3s,opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobilemenu{
+  position:fixed;inset:0;z-index:70;background:var(--bone);
+  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--pad);
+  opacity:0;pointer-events:none;transform:translateY(-12px);
+  transition:opacity .3s ease,transform .35s cubic-bezier(.2,.7,.3,1);
+}
+.mobilemenu.open{opacity:1;pointer-events:auto;transform:none}
+.mobilemenu a{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(30px,9vw,44px);
+  color:var(--red);line-height:1.25;padding:5px 0;
+}
+.mobilemenu a.mm-em{font-style:italic;border-bottom:1px solid var(--red);align-self:flex-start;margin-top:6px}
+.mobilemenu a.mm-book{
+  font-family:'Inter',sans-serif;font-size:13px;align-self:flex-start;
+  margin-top:26px;color:#fff;padding:14px 26px;
+}
+.mm-close{
+  position:absolute;top:14px;right:calc(var(--pad) - 6px);background:none;border:0;
+  color:var(--red);font-size:40px;line-height:1;cursor:pointer;padding:4px 10px;font-family:inherit;
+}
+.btn{
+  display:inline-block;background:var(--red);color:#fff;font-size:12.5px;letter-spacing:.14em;
+  text-transform:uppercase;padding:12px 22px;border:1px solid var(--red);
+  transition:background .3s ease,color .3s ease;white-space:nowrap;cursor:pointer;
+}
+.btn:hover{background:transparent;color:var(--red)}
+.btn.ghost{background:transparent;color:var(--red)}
+.btn.ghost:hover{background:var(--red);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;padding:clamp(96px,13vh,150px) 0 clamp(40px,6vh,90px);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hero-photo{
+  position:absolute;right:0;top:34%;width:44%;height:66%;
+  background:#C9B7AB center/cover no-repeat;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-inner{position:relative;z-index:2;padding:0 var(--pad);mix-blend-mode:multiply}
+.hero-mail{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.1vw,30px);color:var(--red);margin-bottom:clamp(14px,3vh,44px)}
+.hero-type{font-family:'Cormorant Garamond',serif;color:var(--red);line-height:.80;letter-spacing:-.015em;font-weight:400}
+.hero-type .l1{display:block;font-size:clamp(64px,15.1vw,260px);white-space:nowrap}
+.hero-type .l2{display:block;font-size:clamp(64px,15.1vw,260px);white-space:nowrap;margin-top:.04em}
+.hero-type .ghost{color:var(--red-soft)}
+.hero-sub{
+  position:relative;z-index:2;padding:clamp(26px,5vh,64px) var(--pad) 0;
+  max-width:640px;font-size:clamp(15px,1.15vw,18px);color:var(--ink);
+}
+.hero-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- generic section ---------- */
+section{padding:clamp(70px,11vh,150px) var(--pad);position:relative;scroll-margin-top:92px}
+.alt{background:var(--bone-2)}
+.eyebrow{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,2.6vw,38px);
+  color:var(--red);border-bottom:1px solid var(--red);display:inline-block;padding-bottom:4px;margin-bottom:clamp(34px,6vh,72px);
+}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,90px);align-items:start}
+.two.mid{align-items:center}
+.lede{font-size:clamp(19px,1.9vw,27px);line-height:1.4;font-weight:300;letter-spacing:-.01em}
+.body p{font-size:clamp(15px,1.12vw,18px);line-height:1.62}
+.body p + p{margin-top:1.1em}
+.em{color:var(--red)}
+.it{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.16em}
+
+/* story */
+.story-name{font-size:clamp(30px,3.6vw,54px);letter-spacing:.02em;color:var(--red);font-weight:300;margin-top:26px;line-height:1}
+.story-role{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,1.9vw,28px);color:var(--red);margin-top:8px}
+.frame{background:#C9B7AB;aspect-ratio:4/5;overflow:hidden;max-width:520px;margin-left:auto}
+.frame img{width:100%;height:100%;object-fit:cover}
+
+/* services */
+.svc-head{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,58px);color:var(--ink);font-weight:400;margin-bottom:26px}
+.svc-claim{font-size:clamp(24px,3vw,44px);line-height:1.12;font-weight:300;letter-spacing:-.02em}
+.acc{border-top:1px solid var(--rule)}
+.acc-item{border-bottom:1px solid var(--rule)}
+.acc-btn{
+  width:100%;background:none;border:0;text-align:left;cursor:pointer;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:24px 0;font-family:inherit;font-size:clamp(18px,1.5vw,23px);font-weight:300;letter-spacing:-.01em;
+}
+.acc-btn .chev{flex:0 0 auto;width:15px;height:15px;border-right:1.4px solid var(--ink);border-bottom:1.4px solid var(--ink);transform:rotate(45deg) translate(-4px,-4px);transition:transform .35s ease}
+.acc-item.open .acc-btn .chev{transform:rotate(-135deg) translate(-3px,-3px)}
+.acc-panel{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.2,.7,.3,1)}
+.acc-panel-in{padding:0 0 28px}
+.price{font-weight:500;font-size:15.5px;letter-spacing:.02em;color:var(--ink)}
+.acc-panel p{font-size:15.5px;line-height:1.62;margin-top:12px;max-width:52ch}
+.acc-note{margin-top:14px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--red)}
+
+/* method / modalities */
+.mod-list{display:grid;gap:0;border-top:1px solid rgba(176,19,43,.5)}
+.mod{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(16px,4vw,60px);
+  align-items:start;padding:clamp(22px,3.4vh,40px) 0;border-bottom:1px solid rgba(176,19,43,.5);
+}
+.mod h3{
+  font-size:clamp(26px,4.1vw,64px);line-height:.98;font-weight:400;letter-spacing:-.025em;color:var(--red);
+  text-transform:uppercase;font-family:'Inter',sans-serif;
+}
+.mod h3 small{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;font-size:clamp(15px,.36em,26px);letter-spacing:0;margin-top:.3em;opacity:.85}
+.mod p{font-size:clamp(14.5px,1.05vw,17px);line-height:1.6;padding-top:.5em}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,4vw,64px)}
+.step .num{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,5.4vw,86px);color:var(--red-soft);line-height:.9}
+.step h3{font-size:clamp(18px,1.5vw,24px);font-weight:400;margin:10px 0 12px;letter-spacing:-.01em}
+.step p{font-size:15.5px;line-height:1.6}
+
+/* area */
+.area-big{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7.4vw,124px);line-height:.94;color:var(--red);font-weight:400;letter-spacing:-.02em}
+.area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;margin-top:clamp(34px,5vh,60px);border-top:1px solid var(--rule);padding-top:30px}
+.area-grid h4{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:8px}
+.area-grid p{font-size:15.5px;line-height:1.55}
+table.fees{border-collapse:collapse;width:100%;max-width:320px;font-size:15.5px}
+table.fees td{padding:7px 0;border-bottom:1px solid rgba(176,19,43,.25)}
+table.fees td:last-child{text-align:right;color:var(--red);white-space:nowrap;padding-left:14px}
+table.fees tr:last-child td{border-bottom:0}
+
+/* faq */
+.faq{max-width:900px;margin:0 auto}
+.collab{padding:22px 0;border-bottom:1px solid var(--rule)}
+.collab:first-child{padding-top:0}
+.collab h4{font-size:clamp(18px,1.5vw,23px);font-weight:400;letter-spacing:-.01em;color:var(--red);margin-bottom:8px}
+.collab p{font-size:15.5px;line-height:1.6}
+
+/* footer */
+footer{background:var(--red);color:var(--bone);padding:clamp(56px,9vh,110px) var(--pad) 40px}
+footer a{transition:opacity .25s ease}
+footer a:hover{opacity:.65}
+.foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.foot-word{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,10.5vw,180px);line-height:.86;letter-spacing:.02em;font-weight:400}
+.foot-mail{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.2vw,34px);margin-top:14px;display:inline-block;border-bottom:1px solid rgba(244,241,236,.5)}
+.foot-tel{display:table;margin-top:10px}
+.foot-links{display:flex;flex-direction:column;gap:10px;font-size:15px;letter-spacing:.04em;margin-top:10px}
+.foot-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(44px,7vh,90px);padding-top:20px;border-top:1px solid rgba(244,241,236,.28);font-size:12px;letter-spacing:.09em;text-transform:uppercase;opacity:.82}
+
+/* sticky mobile book bar */
+.bookbar{display:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .two,.steps{grid-template-columns:1fr}
+  .mod{grid-template-columns:1fr;gap:8px}
+  .foot-top{grid-template-columns:1fr}
+  .hero{min-height:auto;display:flex;flex-direction:column}
+  .hero-inner{mix-blend-mode:normal;order:1}
+  .hero-photo{position:relative;order:2;right:auto;top:auto;width:100%;height:auto;aspect-ratio:11/12;margin-top:30px}
+  .hero-sub{order:3}
+  .hero-type .l1,.hero-type .l2{white-space:normal;font-size:clamp(46px,13.6vw,104px)}
+  .hero-type .ghost{display:block;color:rgba(176,19,43,.42)}
+  .story-photo{order:-1;margin-bottom:26px}
+  .frame{margin-left:0;max-width:none}
+}
+@media (max-width:760px){
+  header{grid-template-columns:auto 1fr;gap:10px;padding:10px var(--pad)}
+  nav.left{display:none}
+  .mark{justify-self:start}
+  .right{justify-self:end}
+  .right .btn{padding:10px 14px;font-size:11px;letter-spacing:.1em}
+  .burger{display:flex}
+  .bookbar{
+    display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:var(--red);color:#fff;text-align:center;padding:15px;
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  body{padding-bottom:52px}
+  .hero{padding-top:92px}
+}
+
+/* gift cards */
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.gift-card{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1.586/1;padding:16px 18px;background:var(--red);color:var(--bone);border-radius:7px;text-decoration:none;box-shadow:0 1px 0 rgba(0,0,0,.04);transition:transform .25s ease,box-shadow .25s ease}
+.gift-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(124,12,30,.22)}
+.gc-mark{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em}
+.gc-amt{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,2.7vw,42px);line-height:1;font-weight:400}
+.gc-what{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:7px;opacity:.92}
+.gift-note{opacity:.78}
+@media (max-width:760px){.gift-grid{grid-template-columns:1fr;gap:12px}.gift-card{aspect-ratio:auto;min-height:118px;padding:16px 18px}}
+
+/* nav fit: 6 links */
+@media (max-width:1399px){nav.left{gap:16px;font-size:12px}}
+@media (max-width:1240px){nav.left{display:none}.burger{display:flex}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="left">
+    <a href="#story">Info</a>
+    <a href="#services">Services</a>
+    <a href="#method">The Method</a>
+    <a href="#faq">FAQ</a>
+    <a href='/skin-profile'>Intake Form</a>
+    <a href='/referrals'>Referrals</a>
+  </nav>
+  <a href="#top" class="mark" aria-label="Ilmodo home">
+    <div class="m1">ILMODO</div>
+    <div class="m2">MOBILE FACIALS</div>
+  </a>
+  <div class="right">
+    <a class="btn book" href="#book">Book Now</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilemenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobilemenu" id="mobilemenu" aria-hidden="true">
+  <button class="mm-close" id="mm-close" aria-label="Close menu">&times;</button>
+  <a href="#story">Info</a>
+  <a href="#services">Services</a>
+  <a href="#gift">Gift Cards</a>
+  <a href="#method">The Method</a>
+  <a href="#area">Service Area</a>
+  <a href="#collaborate">Collaborations</a>
+  <a href="#faq">Questions</a>
+  <a class='mm-em' href='/skin-profile'>Skin Intake Form</a>
+  <a href='/referrals'>Referrals</a>
+  <a class="btn book mm-book" href="#book">Book Now</a>
+</nav>
+
+<a class="bookbar book" href="#book">Book Now</a>
+
+<!-- ============ HERO ============ -->
+<div class="hero" id="top">
+  <div class="hero-photo"><img src="assets/hero.jpg" alt="Ilmodo mobile facial studio"></div>
+  <div class="hero-inner">
+    <div class="hero-mail"><a class="mail-link" href="mailto:rubywei@ilmodobeauty.com">rubywei@ilmodobeauty.com</a></div>
+    <div class="hero-type">
+      <span class="l1">UNHURRIED</span>
+      <span class="l2">skincare <span class="ghost">il modo</span></span>
+    </div>
+  </div>
+  <div class="hero-sub">
+    <p>A mobile facial studio in Houston. We come to you, and we give your skin exactly the time it needs that day — 60 to 120 minutes.</p>
+    <div class="hero-cta">
+      <a class="btn book" href="#book">Book Now</a>
+      <a class="btn ghost" href="#services">See Services</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STORY ============ -->
+<section id="story" class="rv">
+  <div class="two mid">
+    <div class="body">
+      <span class="eyebrow serif" style="margin-bottom:clamp(22px,3.4vh,38px)">The Philosophy</span>
+      <p class="lede">For anyone who was taught that an hour is something you earn.</p>
+      <p style="margin-top:1.4em">Ilmodo is a <span class="it em">mobile facial studio</span> built on a single belief: there is a way to take your hour back, and it isn't rushed. <span class="em">We come to you, and we give your skin exactly the time it needs that day — 60 to 120 minutes, decided during our skin consultation.</span> You don't book a generic slot. You give us the hour, and we give it back to you.</p>
+      <div class="story-name">RUBY WEI</div>
+      <div class="story-role">Founder &amp; Creative Director</div>
+    </div>
+    <div class="story-photo">
+      <div class="frame"><img src="assets/founder.jpg" alt="Ruby Wei, founder of Ilmodo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="alt rv">
+  <div class="two">
+    <div>
+      <h2 class="svc-head serif">Our Services</h2>
+      <p class="svc-claim">Explore our range of services designed to help you move forward with confidence, wherever you're headed next.</p>
+    </div>
+    <div class="acc" id="svc-acc">
+      <div class="acc-item">
+        <button class="acc-btn"><span>il momento: The Event Facial</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in">
+          <div class="price">$225 &nbsp;|&nbsp; 1–2 hours</div>
+          <p>For the wedding, the demo day, the reunion, the photos, the bell ceremony. A treatment engineered for skin that has to look its best on a specific date. Ideally, book 3–7 days before.</p>
+          <div class="acc-note">Travel free within 10 miles &middot; full tiers below</div>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>il ritmo: Monthly Maintenance</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in">
+          <div class="price">$200 &nbsp;|&nbsp; 1–2 hours</div>
+          <p>Skin responds to rhythm, and consistency is key. One treatment a month, adjusted each time to where your skin is at.</p>
+          <div class="acc-note">Travel free within 10 miles &middot; full tiers below</div>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>il modo: The Membership</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in">
+          <div class="price">$2,000 / year &nbsp;|&nbsp; One facial a month, for the whole year</div>
+          <p>The way in. Twelve facials throughout the year, one per month, two of them our gift. Length is still decided the day of — 60 to 120 minutes, every time. Members get first pick of the calendar and no mileage fee anywhere inside 35 miles. For the ones who want “unhurried” to become a ritual. What your skin needs, always.</p>
+          <div class="acc-note">First pick of the calendar · No mileage fee within 35 miles</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:clamp(34px,5vh,64px)"><a class="btn book" href="#book">Book Now</a></div>
+</section>
+
+<!-- ============ GIFT CARDS ============ -->
+<section id="gift" class="rv">
+  <span class="eyebrow serif">The Gift</span>
+  <div class="two">
+    <div>
+      <p class="svc-claim">Unhurried care, for someone who would never book it for themselves.</p>
+    </div>
+    <div class="body">
+      <div class="gift-grid">
+        <a class="gift-card" href="https://app.squareup.com/gift/MLK4PQ53D5S4N/order" target="_blank" rel="noopener">
+          <span class="gc-mark">ILMODO</span>
+          <span><span class="gc-amt">$200</span><span class="gc-what">il ritmo &middot; one facial</span></span>
+        </a>
+        <a class="gift-card" href="https://app.squareup.com/gift/MLK4PQ53D5S4N/order" target="_blank" rel="noopener">
+          <span class="gc-mark">ILMODO</span>
+          <span><span class="gc-amt">$225</span><span class="gc-what">il momento &middot; the event facial</span></span>
+        </a>
+        <a class="gift-card" href="https://app.squareup.com/gift/MLK4PQ53D5S4N/order" target="_blank" rel="noopener">
+          <span class="gc-mark">ILMODO</span>
+          <span><span class="gc-amt">$2,000</span><span class="gc-what">il modo &middot; a year of facials</span></span>
+        </a>
+      </div>
+      <p class="gift-note">Sent by email or text on the date you choose. The value never expires, and other amounts are available at checkout.</p>
+      <p style="margin-top:22px"><a class="btn" href="https://app.squareup.com/gift/MLK4PQ53D5S4N/order" target="_blank" rel="noopener">Send a gift card</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section id="method" class="rv">
+  <span class="eyebrow serif">The Method</span>
+  <p class="lede" style="max-width:52ch;margin-bottom:clamp(34px,5vh,60px)">Every Ilmodo facial is assembled from these, chosen for your skin on the day — never a fixed protocol.</p>
+  <div class="mod-list">
+
+    <div class="mod">
+      <h3>Disincrustation<small>follicular cleansing</small></h3>
+      <p>Galvanic current run in reverse to saponify hardened sebum inside the follicle. It softens the plug before anything is extracted, so comedones lift out instead of being forced. This is the step that makes a deep follicular cleanse comfortable rather than traumatic.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Ultrasound Blade<small>decongesting</small></h3>
+      <p>A vibrating steel spatula that uses sound waves and water to lift debris, softened sebum and dead cells out of the follicle. Unclogs and decongests with no grit and no scrubbing.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Chemical Peels<small>resurfacing</small></h3>
+      <p>Acids that break the desmosomal bonds holding keratinocytes to one another, so dead cells release rather than being abraded off. Thins the stratum corneum, accelerates cell turnover, decongests follicles and opens the way for everything applied afterward. Lifts discoloration, evens tone, and at the right depth supports collagen synthesis while calming inflammation. Strength is chosen for your barrier that day, not from a fixed menu.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Direct High Frequency<small>germicidal</small></h3>
+      <p>A glass electrode passed over the skin, producing ozone at the surface with a germicidal effect on bacteria. Used after extractions and over active breakouts &mdash; so that what has just been opened doesn't become the next thing you're treating.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Iontophoresis<small>dermal hydration</small></h3>
+      <p>A low-level galvanic current that drives water-soluble actives past the stratum corneum and into the dermis, where topical application alone will not reach. This corrects dermal dehydration rather than surface dryness &mdash; the difference between skin short of water and skin short of oil.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Ultrasound<small>smoothing &amp; contour</small></h3>
+      <p>High-frequency mechanical vibration delivered into the tissue to temporarily plump and smooth the surface, minimising the appearance of fine lines and giving mild lift and contour definition. The effect is real and it is temporary, which is exactly why it's timed to the week of an event.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Microcurrent<small>tone &amp; lift</small></h3>
+      <p>Low-level current that works on the muscle beneath the skin rather than the surface of it &mdash; re-educating tone, firming and lifting, and softening the look of fine lines as contour returns. Cumulative by nature: it builds across a course rather than arriving in a single sitting.</p>
+    </div>
+
+    <div class="mod">
+      <h3>Lymphatic Drainage<small>de-puffing</small></h3>
+      <p>Slow, rhythmic manual work that moves stagnant lymph out of the face and neck. Clearing that congestion is the root of it; the increase in circulation and the better-oxygenated skin that follows are the visible effects. Puffiness settles, and the jaw and eyes get their definition back.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WHAT TO EXPECT ============ -->
+<section class="alt rv">
+  <span class="eyebrow serif">What to Expect</span>
+  <div class="steps">
+    <div class="step">
+      <div class="num">01</div>
+      <h3>The consultation</h3>
+      <p>We start by reading your skin — where it is today, not where it was last month. That reading decides the length of your treatment and which modalities we use. Nothing is pre-decided.</p>
+      <p style="margin-top:14px"><a href='/skin-profile' style='color:var(--red);border-bottom:1px solid var(--red)'>Fill in your intake form</a> before your first visit and we start from what your skin has already been through.</p>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <h3>The hour</h3>
+      <p>We arrive with everything: table, linens, tools, products. You need a room and an outlet. Somewhere between 60 and 120 minutes later, you get up. No upselling mid-treatment, ever.</p>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <h3>After</h3>
+      <p>You leave with a short, honest home-care plan — what to use, what to stop using, and when to come back. Written down, so you're not trying to remember it later.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section id="area" class="rv">
+  <span class="eyebrow serif">Where We Come</span>
+  <div class="area-big">Houston,<br>and 40 miles<br>around it.</div>
+  <div class="area-grid">
+    <div>
+      <h4>Travel, by distance</h4>
+      <table class="fees">
+        <tr><td>Within 10 miles</td><td>No fee</td></tr>
+        <tr><td>10&ndash;20 miles</td><td>$25</td></tr>
+        <tr><td>20&ndash;30 miles</td><td>$50</td></tr>
+        <tr><td>30&ndash;40 miles</td><td>$75</td></tr>
+        <tr><td>Over 40 miles</td><td>Quoted first</td></tr>
+      </table>
+      <p style="margin-top:12px">Added to your final bill, based on the address you give when you book. Never a surprise.</p>
+    </div>
+    <div>
+      <h4>Members travel free</h4>
+      <p>No mileage fee anywhere inside 35 miles &mdash; that's part of what the membership buys you, along with first pick of the calendar. Inner Loop, Heights, Montrose, River Oaks, Memorial, Bellaire, West U, Midtown, EaDo, Katy, Sugar Land, The Woodlands and everything between.</p>
+    </div>
+    <div>
+      <h4>What we need</h4>
+      <p>A room with space for a treatment table, a power outlet, and access to a sink. That's the whole list.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLLABORATIONS ============ -->
+<section id="collaborate" class="alt rv">
+  <span class="eyebrow serif">Beyond the Treatment Room</span>
+  <div class="two">
+    <div>
+      <p class="svc-claim">Ilmodo works past the single appointment, and I'm open to the conversation.</p>
+    </div>
+    <div class="body">
+      <div class="collab">
+        <h4>Events &amp; weddings</h4>
+        <p>Bridal parties, launches, press days, shoots. Skin prepared on a schedule that works backwards from the date, for one person or for the whole party.</p>
+      </div>
+      <div class="collab">
+        <h4>Corporate wellness</h4>
+        <p>Programmes for teams who are told to look after themselves and never given the hour to do it. On site, on a recurring rhythm, structured around your calendar.</p>
+      </div>
+      <div class="collab">
+        <h4>Travel, domestic and international</h4>
+        <p>I travel for work. If you need Ilmodo somewhere else in the country, or somewhere else entirely, that's a conversation worth having.</p>
+      </div>
+      <p style="margin-top:26px"><a class="btn" href="#book-anchor">Start the conversation</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="alt rv">
+  <div class="faq">
+    <span class="eyebrow serif">Questions</span>
+    <div class="acc" id="faq-acc">
+      <div class="acc-item">
+        <button class="acc-btn"><span>What do I need to have ready?</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in"><p>A room with roughly 2 metres by 2 metres of clear floor, a power outlet, and a sink nearby. We bring the table, linens, tools, products and towels. If you have a preferred playlist, have it ready.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>Why is the length not fixed?</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in"><p>Because skin isn't fixed. A fixed slot forces the treatment to fit the clock. We read your skin first, then decide whether today is 60 minutes or 120. You're charged the same either way.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>Is this safe for sensitive or reactive skin?</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in"><p>Yes — sensitivity is exactly why the protocol isn't pre-set. Reactive skin usually gets lymphatic drainage, hydration and barrier support rather than acids or extraction. Tell us during the consultation and bring a list of anything you react to.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>Should I book before an event?</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in"><p>Three to seven days before is the best window. That's enough time for any redness to settle and for the hydration to fully show.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>How does the travel fee work?</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in"><p>Free within 10 miles. After that it's $25 for 10&ndash;20 miles, $50 for 20&ndash;30, $75 for 30&ndash;40, and anything past 40 miles we quote you before confirming. It's worked out from the address you give when you book and added to your final bill, so you're never charged something you didn't see coming. Members pay no travel fee at all inside 35 miles.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn"><span>What is the cancellation policy?</span><span class="chev"></span></button>
+        <div class="acc-panel"><div class="acc-panel-in"><p>Booking takes a $75 deposit, which comes off the price of your treatment. Reschedule or cancel with at least 24 hours' notice and it moves with you or is refunded in full. Inside 24 hours, or for a no-show, the deposit is kept &mdash; we travel to you, and that window can't be refilled that fast. Emergencies are handled like emergencies.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="book-anchor">
+  <div class="foot-top">
+    <div>
+      <div class="foot-word">ILMODO</div>
+      <a class="foot-mail mail-link" href="mailto:rubywei@ilmodobeauty.com">rubywei@ilmodobeauty.com</a>
+      <a class="foot-mail foot-tel" href="tel:+18326746132">832-674-6132</a>
+    </div>
+    <div>
+      <a class="btn" style="background:var(--bone);color:var(--red);border-color:var(--bone)" href="#book" id="foot-book">Book Now</a>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#gift">Gift Cards</a>
+        <a href="#method">The Method</a>
+        <a href="#area">Service Area</a>
+        <a href="#collaborate">Collaborations</a>
+        <a href="#faq">Questions</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" id="ig-link">Instagram</a>
+        <a href='/skin-profile'>Skin Intake Form</a>
+        <a href='/referrals'>Referrals</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>Ilmodo — Mobile Facials · Houston, Texas</span>
+    <span>&copy; <span id="yr"></span> Ilmodo</span>
+  </div>
+</footer>
+
+<script>
+/* ====== THE ONE THING TO SWAP: your Square booking link ====== */
+const BOOKING_URL = "https://book.squareup.com/appointments/ne7uq7wif79wxj/location/LHZG1QEM6F4RK/services";
+const INSTAGRAM_URL = "https://instagram.com/ilmodobeauty";
+const CONTACT_EMAIL = "rubywei@ilmodobeauty.com";
+/* ============================================================ */
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+document.querySelectorAll('a.book, #foot-book').forEach(a => {
+  if (BOOKING_URL && BOOKING_URL !== "#book") {
+    a.href = BOOKING_URL; a.target = "_blank"; a.rel = "noopener";
+  } else {
+    // Square link not connected yet — send people to the contact block instead of nowhere.
+    a.href = "#book-anchor";
+  }
+});
+document.getElementById('ig-link').href = INSTAGRAM_URL;
+// only the two places that display the address as text — not buttons with their own label
+document.querySelectorAll('a.mail-link').forEach(a => {
+  a.href = "mailto:" + CONTACT_EMAIL; a.textContent = CONTACT_EMAIL;
+});
+
+/* mobile menu */
+const menu = document.getElementById('mobilemenu');
+const burger = document.getElementById('burger');
+const setMenu = open => {
+  menu.classList.toggle('open', open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+document.getElementById('mm-close').addEventListener('click', () => setMenu(false));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+/* accordions */
+document.querySelectorAll('.acc').forEach(acc => {
+  const items = [...acc.querySelectorAll('.acc-item')];
+  items.forEach((item, i) => {
+    const btn = item.querySelector('.acc-btn');
+    const panel = item.querySelector('.acc-panel');
+    const open = () => { item.classList.add('open'); panel.style.maxHeight = panel.scrollHeight + 'px'; };
+    const close = () => { item.classList.remove('open'); panel.style.maxHeight = '0px'; };
+    btn.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      items.forEach(o => { o.classList.remove('open'); o.querySelector('.acc-panel').style.maxHeight = '0px'; });
+      if (!wasOpen) open();
+    });
+    if (i === 0 && acc.id === 'svc-acc') open();
+  });
+});
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.acc-item.open .acc-panel').forEach(p => p.style.maxHeight = p.scrollHeight + 'px');
+});
+
+/* reveal on scroll — with a fail-safe so nothing can ever stay invisible */
+const reveals = [...document.querySelectorAll('.rv')];
+const showIfNear = () => {
+  reveals.forEach(el => {
+    if (el.classList.contains('in')) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.94 && r.bottom > 0) el.classList.add('in');
+  });
+};
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+  reveals.forEach(el => io.observe(el));
+} else {
+  reveals.forEach(el => el.classList.add('in'));
+}
+['scroll','resize','load'].forEach(ev => window.addEventListener(ev, showIfNear, {passive:true}));
+showIfNear();
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) reveals.forEach(el => el.classList.add('in'));
+</script>
+</body>
+</html>
