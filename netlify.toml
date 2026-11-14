@@ -1,0 +1,17 @@
+# Netlify deploys the static site in /site on every push to main.
+[build]
+  publish = "site"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000"
+
+[[headers]]
+  for = "/brandassets/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=86400"
